@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Proyecto.Models.Persona>
+
+@{
+    ViewData["Title"] = "ListarRegistros";
+}
+
+<h1>ListarRegistros</h1>
+
+<p>                <!---->      <!---->
+    <a asp-action="Crear">Agregar Nueva Persona</a> <!---->
+</p>
+<table class="table">
+    <thead>
+        <tr class="table-dark">
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="table-dark">
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td class="table-warning">
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td class="table-warning">
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td class="table-danger">
+                @Html.ActionLink("Editar", "Editar", new { id=item.Id }) || <!---->
+                @Html.ActionLink("Detalle", "Detalle", new { id=item.Id }) || <!---->
+                @Html.ActionLink("Eliminar", "Eliminar", new { id=item.Id }) <!---->
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

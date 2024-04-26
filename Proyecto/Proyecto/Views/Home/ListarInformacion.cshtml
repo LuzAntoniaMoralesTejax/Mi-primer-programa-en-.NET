@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Proyecto.Models.Info>
+
+@{
+    ViewData["Title"] = "ListarInformacion";
+}
+
+<h1>ListarInformacion</h1>
+
+<p>
+    <a asp-action="CrearInfo">Nuevo Dato</a>
+</p>
+<table class="table">
+    <thead>
+        <tr class="table-dark">
+            <th >
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Oficio)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="table-dark">
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td class="table-warning">
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td class="table-warning">
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td class="table-warning">
+                @Html.DisplayFor(modelItem => item.Oficio)
+            </td>
+            <td class="table-danger">
+                @Html.ActionLink("Editar", "EditarInfo", new { id=item.Id }) ||
+                @Html.ActionLink("Detalle", "DetalleInfo", new { id=item.Id }) ||
+                @Html.ActionLink("Eliminar", "EliminarInfo", new { id=item.Id})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
